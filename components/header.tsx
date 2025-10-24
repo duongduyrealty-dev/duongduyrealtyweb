@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Menu, X, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,8 +14,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">🏠</span>
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt="Dương Duy Realty Logo"
+                width={40}
+                height={40}
+                className="object-contain"
+              />
             </div>
             <div className="hidden sm:block">
               <h1 className="text-lg md:text-xl font-bold text-foreground">Dương Duy Realty</h1>

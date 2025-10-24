@@ -91,14 +91,14 @@ export default function SearchForm({ onSearch, onReset, isLoading }: SearchFormP
 
           {/* District */}
           <div className="space-y-2">
-            <label className="block text-sm font-semibold text-foreground">Quận/Huyện</label>
+            <label className="block text-sm font-semibold text-foreground">Khu vực</label>
             <select
               value={selectedDistrict}
               onChange={handleDistrictChange}
               disabled={!selectedProvince}
               className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <option value="">Chọn quận/huyện</option>
+              <option value="">Chọn khu vực</option>
               {districts.map((district) => (
                 <option key={district} value={district}>
                   {district}
@@ -134,9 +134,9 @@ export default function SearchForm({ onSearch, onReset, isLoading }: SearchFormP
               className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
             >
               <option value="">Tất cả loại đất</option>
-              <option value="Thổ cư">Thổ cư (Residential)</option>
-              <option value="Nông nghiệp">Nông nghiệp (Agricultural)</option>
-              <option value="Thương mại-Dịch vụ">Thương mại-Dịch vụ (Commercial)</option>
+              <option value="Thổ cư">Thổ cư</option>
+              <option value="Nông nghiệp">Nông nghiệp</option>
+              <option value="Thương mại-Dịch vụ">Thương mại - Dịch vụ</option>
             </select>
           </div>
         </div>

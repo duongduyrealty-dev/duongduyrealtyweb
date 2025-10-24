@@ -42,7 +42,7 @@ export default function ResultsTable({ results, isLoading }: ResultsTableProps) 
   const handleDownloadPDF = () => {
     // Simulate PDF download
     const csvContent = [
-      ["Tỉnh", "Quận/Huyện", "Phường/Xã", "Đường", "Giá tối thiểu (VNĐ/m²)", "Giá tối đa (VNĐ/m²)", "Loại đất"],
+      ["Tỉnh", "Khu vực", "Phường/Xã", "Đường", "Giá tối thiểu (VNĐ/m²)", "Giá tối đa (VNĐ/m²)", "Loại đất"],
       ...sortedResults.map((item) => [
         item.province,
         item.district,

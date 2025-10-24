@@ -13,7 +13,7 @@ export default function Hero() {
             TRA CỨU BẢNG GIÁ ĐẤT ĐỀ XUẤT DỰ KIẾN 2026
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 text-balance">
-            Lưu ý: Đây chỉ là bảng giá đề xuất dự kiến của UBND Tỉnh Đồng Nai.
+            Lưu ý: Đây chỉ là bảng giá đề xuất dự kiến 2026 của UBND Tỉnh Đồng Nai.
           </p>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Facebook, MapPin, Phone, Mail, Instagram } from "lucide-react"
+import Image from "next/image"
 
 export default function Footer() {
   return (
@@ -8,8 +9,14 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">🏠</span>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/logo.png"
+                  alt="Dương Duy Realty Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
               </div>
               <h3 className="text-lg font-bold text-foreground">Dương Duy Realty</h3>
             </div>
@@ -92,7 +99,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">+84 (0) 964 198 005</span>
+                <span className="text-sm text-muted-foreground">(+84)964.198.005</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
