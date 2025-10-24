@@ -11,7 +11,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-lg">🏠</span>
               </div>
-              <h3 className="text-lg font-bold text-foreground">Tra cứu Giá Đất</h3>
+              <h3 className="text-lg font-bold text-foreground">Dương Duy Realty</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               Nền tảng tra cứu bảng giá đất chính thức theo Quyết định UBND tỉnh tại Việt Nam.
@@ -92,15 +92,15 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">+84 (0) 123 456 789</span>
+                <span className="text-sm text-muted-foreground">+84 (0) 964 198 005</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">info@tracuugia.vn</span>
+                <span className="text-sm text-muted-foreground">duongduy.realty@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">Hà Nội, Việt Nam</span>
+                <span className="text-sm text-muted-foreground">Phường Long Khánh, Tỉnh Đồng Nai, Việt Nam</span>
               </li>
             </ul>
           </div>

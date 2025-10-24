@@ -17,8 +17,8 @@ export default function Header() {
               <span className="text-primary-foreground font-bold text-lg">🏠</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg md:text-xl font-bold text-foreground">Tra cứu Giá Đất</h1>
-              <p className="text-xs text-muted-foreground">Land Price Lookup</p>
+              <h1 className="text-lg md:text-xl font-bold text-foreground">Dương Duy Realty</h1>
+              <p className="text-xs text-muted-foreground">Chuyên bất động sản khu vực Đồng Nai</p>
             </div>
           </div>
 

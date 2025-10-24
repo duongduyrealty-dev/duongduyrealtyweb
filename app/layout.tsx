@@ -1,16 +1,20 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const montserrat = Montserrat({
+  subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
-  title: "Tra cứu Bảng Giá Đất - Land Price Lookup",
-  description: "Tra cứu bảng giá đất chính thức theo Quyết định UBND tỉnh. Official land price lookup for Vietnam.",
-  generator: "v0.app",
+  title: "Tra cứu Bảng Giá Đất - Dương Duy Realty",
+  description: "Tra cứu bảng giá đất dự kiến 2026 của UBND Tỉnh Đồng Nai.",
+  generator: "Quang Duy Dương Development",
 }
 
 export default function RootLayout({
@@ -20,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className={`font-sans antialiased`}>
+      <body className={`${montserrat.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>
