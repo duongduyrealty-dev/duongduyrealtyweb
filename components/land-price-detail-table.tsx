@@ -230,7 +230,7 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
                                 <div className="flex flex-row">
                                   {/* Cột trái - Nội dung mô tả */}
                                   <div className="flex-[2] p-4 border-r border-border">
-                                    <p className="text-sm text-foreground leading-relaxed">{info.title}</p>
+                                    <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{info.title}</p>
                                   </div>
 
                                   {/* Cột phải - Thông tin giá */}

@@ -240,8 +240,8 @@ export const landPriceDetailData: LandPriceDetail[] = [
     },
     additionalInfo: [
       {
-        title: "Vị trí đắc địa, gần trung tâm thành phố, thuận tiện giao thông",
-        currentPrice: 5000000,
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường Quốc lộ 1 - Xuân Lập đến Đường 21/4 đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",
+        currentPrice: 0,
         proposedPrice: 14000000,
         coefficient: 2.8,
       },
@@ -273,23 +273,23 @@ export const landPriceDetailData: LandPriceDetail[] = [
   },
   {
     id: 2,
-    streetName: "Đường Nguyễn Văn Hoa",
-    startPoint: "Đường Võ Thị Sáu",
-    endPoint: "Đường N1 khu dân cư D2D",
+    streetName: "Đường Nguyễn Trãi",
+    startPoint: "Ngã ba Hùng Vương",
+    endPoint: "Đường Nguyễn Thị Minh Khai",
     residential: {
-      currentPrice: 18000000,
-      proposedPrice: 21600000,
-      coefficient: 1.20,
+      currentPrice: 5000000,
+      proposedPrice: 14000000,
+      coefficient: 2.8,
     },
     commercial: {
-      currentPrice: 25000000,
-      proposedPrice: 30000000,
-      coefficient: 1.20,
+      currentPrice: 3500000,
+      proposedPrice: 9800000,
+      coefficient: 2.8,
     },
     production: {
-      currentPrice: 15000000,
-      proposedPrice: 18000000,
-      coefficient: 1.20,
+      currentPrice: 3000000,
+      proposedPrice: 8400000,
+      coefficient: 2.8,
     },
   },
   {

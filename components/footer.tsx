@@ -21,7 +21,7 @@ export default function Footer() {
               <h3 className="text-lg font-bold text-foreground">Dương Duy Realty</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              Nền tảng tra cứu bảng giá đất chính thức theo Quyết định UBND tỉnh tại Việt Nam.
+              Chuyên bất động sản khu vực Long Khánh - Đồng Nai.
             </p>
             <div className="flex gap-3">
               <a
@@ -116,8 +116,8 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">© 2025 Tra cứu Giá Đất. Tất cả quyền được bảo lưu.</p>
-            <p className="text-xs text-muted-foreground">Dữ liệu được cập nhật theo Luật Đất đai 2024</p>
+            <p className="text-sm text-muted-foreground">© 2025 </p>
+            <p className="text-xs text-muted-foreground"></p>
           </div>
         </div>
       </div>
