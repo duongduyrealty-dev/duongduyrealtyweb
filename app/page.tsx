@@ -4,12 +4,12 @@ import { useState } from "react"
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import SearchForm from "@/components/search-form"
-import ResultsTable from "@/components/results-table"
+import LandPriceDetailTable from "@/components/land-price-detail-table"
 import Footer from "@/components/footer"
-import { landPriceData } from "@/lib/data"
+import { landPriceDetailData } from "@/lib/data"
 
 export default function Home() {
-  const [searchResults, setSearchResults] = useState<typeof landPriceData>([])
+  const [detailSearchResults, setDetailSearchResults] = useState<typeof landPriceDetailData>([])
   const [hasSearched, setHasSearched] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -24,32 +24,22 @@ export default function Home() {
 
     // Simulate API call delay
     setTimeout(() => {
-      let results = landPriceData
-
-      if (filters.province) {
-        results = results.filter((item) => item.province === filters.province)
-      }
-      if (filters.district) {
-        results = results.filter((item) => item.district === filters.district)
-      }
-      if (filters.ward) {
-        results = results.filter((item) => item.ward === filters.ward)
-      }
+      // Lọc dữ liệu chi tiết theo tên đường
+      let detailResults = landPriceDetailData
       if (filters.street) {
-        results = results.filter((item) => item.street.toLowerCase().includes(filters.street!.toLowerCase()))
-      }
-      if (filters.landType) {
-        results = results.filter((item) => item.landType === filters.landType)
+        detailResults = detailResults.filter((item) =>
+          item.streetName.toLowerCase().includes(filters.street!.toLowerCase())
+        )
       }
 
-      setSearchResults(results)
+      setDetailSearchResults(detailResults)
       setHasSearched(true)
       setIsLoading(false)
     }, 600)
   }
 
   const handleReset = () => {
-    setSearchResults([])
+    setDetailSearchResults([])
     setHasSearched(false)
   }
 
@@ -60,7 +50,9 @@ export default function Home() {
         <Hero />
         <div className="container mx-auto px-4 py-8 md:py-12">
           <SearchForm onSearch={handleSearch} onReset={handleReset} isLoading={isLoading} />
-          {hasSearched && <ResultsTable results={searchResults} isLoading={isLoading} />}
+
+          {/* Hiển thị bảng dữ liệu chi tiết */}
+          {hasSearched && <LandPriceDetailTable results={detailSearchResults} isLoading={isLoading} />}
         </div>
       </main>
       <Footer />

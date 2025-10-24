@@ -182,343 +182,93 @@ export function getWards(province: string, district: string): string[] {
   return wardData[province]?.[district] || []
 }
 
-// Dữ liệu giá đất Đồng Nai (cập nhật 2025)
-export const landPriceData = [
-  // TP. Biên Hòa
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Biên Hòa",
-    street: "Đường Nguyễn Huệ",
-    minPrice: 85000000,
-    maxPrice: 120000000,
-    landType: "Thương mại-Dịch vụ",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Biên Hòa",
-    street: "Đường Trần Phú",
-    minPrice: 75000000,
-    maxPrice: 105000000,
-    landType: "Thương mại-Dịch vụ",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Trấn Biên",
-    street: "Đường Võ Thị Sáu",
-    minPrice: 65000000,
-    maxPrice: 95000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Trảng Dài",
-    street: "Đường Bùi Trọng Nghĩa",
-    minPrice: 55000000,
-    maxPrice: 80000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Tam Hiệp",
-    street: "Đường Trần Quốc Toản",
-    minPrice: 60000000,
-    maxPrice: 90000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Long Bình",
-    street: "Đường Thân Nhân Trung",
-    minPrice: 70000000,
-    maxPrice: 100000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Hố Nai",
-    street: "Quốc lộ 1A",
-    minPrice: 50000000,
-    maxPrice: 75000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Long Hưng",
-    street: "Đường Nguyễn Văn Tỏ",
-    minPrice: 45000000,
-    maxPrice: 70000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Phước Tân",
-    street: "Quốc lộ 51",
-    minPrice: 40000000,
-    maxPrice: 65000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Tam Phước",
-    street: "Quốc lộ 51",
-    minPrice: 38000000,
-    maxPrice: 60000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Bình Lộc",
-    street: "Đường N5",
-    minPrice: 35000000,
-    maxPrice: 55000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Biên Hòa",
-    ward: "Phường Tân Triều",
-    street: "Đường 768",
-    minPrice: 30000000,
-    maxPrice: 50000000,
-    landType: "Thổ cư",
-  },
+// Interface cho dữ liệu giá đất chi tiết từ file CSV
+export interface LandPriceDetail {
+  id: number                    // TT - Số thứ tự
+  streetName: string            // Tên đường sao thăng
+  startPoint: string            // Điểm đầu
+  endPoint: string              // Điểm cuối
+  // Thông tin giá đất theo loại
+  residential?: {               // Đất ở
+    currentPrice: number
+    proposedPrice: number
+    coefficient: number
+  }
+  commercial?: {                // Đất thương mại - dịch vụ
+    currentPrice: number
+    proposedPrice: number
+    coefficient: number
+  }
+  production?: {                // Đất sản xuất - kinh doanh
+    currentPrice: number
+    proposedPrice: number
+    coefficient: number
+  }
+}
 
-  // TP. Long Khánh
+// Dữ liệu giá đất chi tiết từ file CSV - Phường Long Khánh
+export const landPriceDetailData: LandPriceDetail[] = [
   {
-    province: "Đồng Nai",
-    district: "TP. Long Khánh",
-    ward: "Phường Long Khánh",
-    street: "Đường Cách Mạng Tháng Tám",
-    minPrice: 45000000,
-    maxPrice: 70000000,
-    landType: "Thương mại-Dịch vụ",
+    id: 1,
+    streetName: "Đường Hồng Thập Tự",
+    startPoint: "Đường Quốc lộ 1 - Xuân Lập",
+    endPoint: "Đường 21/4",
+    residential: {
+      currentPrice: 4000000,
+      proposedPrice: 11200000,
+      coefficient: 2.8,
+    },
+    commercial: {
+      currentPrice: 2800000,
+      proposedPrice: 7840000,
+      coefficient: 2.8,
+    },
+    production: {
+      currentPrice: 2400000,
+      proposedPrice: 6720000,
+      coefficient: 2.8,
+    },
   },
   {
-    province: "Đồng Nai",
-    district: "TP. Long Khánh",
-    ward: "Phường Long Khánh",
-    street: "Quốc lộ 1A",
-    minPrice: 40000000,
-    maxPrice: 65000000,
-    landType: "Thổ cư",
+    id: 2,
+    streetName: "Đường Nguyễn Văn Hoa",
+    startPoint: "Đường Võ Thị Sáu",
+    endPoint: "Đường N1 khu dân cư D2D",
+    residential: {
+      currentPrice: 18000000,
+      proposedPrice: 21600000,
+      coefficient: 1.20,
+    },
+    commercial: {
+      currentPrice: 25000000,
+      proposedPrice: 30000000,
+      coefficient: 1.20,
+    },
+    production: {
+      currentPrice: 15000000,
+      proposedPrice: 18000000,
+      coefficient: 1.20,
+    },
   },
   {
-    province: "Đồng Nai",
-    district: "TP. Long Khánh",
-    ward: "Phường Bảo Vinh",
-    street: "Đường Duy Tân",
-    minPrice: 35000000,
-    maxPrice: 55000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Long Khánh",
-    ward: "Phường Xuân Lập",
-    street: "Quốc lộ 1",
-    minPrice: 32000000,
-    maxPrice: 50000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "TP. Long Khánh",
-    ward: "Phường Hàng Gòn",
-    street: "Quốc lộ 56",
-    minPrice: 28000000,
-    maxPrice: 45000000,
-    landType: "Thổ cư",
-  },
-
-  // Huyện Trảng Bom
-  {
-    province: "Đồng Nai",
-    district: "Huyện Trảng Bom",
-    ward: "Xã Trảng Bom",
-    street: "Đường Nguyễn Hữu Cảnh",
-    minPrice: 25000000,
-    maxPrice: 40000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Trảng Bom",
-    ward: "Xã An Viễn",
-    street: "Đường DT777",
-    minPrice: 20000000,
-    maxPrice: 35000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Trảng Bom",
-    ward: "Xã Bàu Hàm",
-    street: "Đường Trảng Bom - Cây Gáo",
-    minPrice: 18000000,
-    maxPrice: 30000000,
-    landType: "Nông nghiệp",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Trảng Bom",
-    ward: "Xã Hưng Thịnh",
-    street: "Quốc lộ 1A",
-    minPrice: 22000000,
-    maxPrice: 38000000,
-    landType: "Thổ cư",
-  },
-
-  // Huyện Xuân Lộc
-  {
-    province: "Đồng Nai",
-    district: "Huyện Xuân Lộc",
-    ward: "Xã Xuân Lộc",
-    street: "Đường Hoàng Văn Thụ",
-    minPrice: 20000000,
-    maxPrice: 35000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Xuân Lộc",
-    ward: "Xã Xuân Định",
-    street: "Quốc lộ 1A",
-    minPrice: 18000000,
-    maxPrice: 30000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Xuân Lộc",
-    ward: "Xã Xuân Phú",
-    street: "Quốc lộ 1A",
-    minPrice: 16000000,
-    maxPrice: 28000000,
-    landType: "Nông nghiệp",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Xuân Lộc",
-    ward: "Xã Xuân Hòa",
-    street: "Quốc lộ 1A",
-    minPrice: 15000000,
-    maxPrice: 25000000,
-    landType: "Nông nghiệp",
-  },
-
-  // Huyện Long Thành
-  {
-    province: "Đồng Nai",
-    district: "Huyện Long Thành",
-    ward: "Xã Long Thành",
-    street: "Đường Trần Quốc Toản",
-    minPrice: 50000000,
-    maxPrice: 80000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Long Thành",
-    ward: "Xã An Phước",
-    street: "Ấp 7",
-    minPrice: 35000000,
-    maxPrice: 55000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Long Thành",
-    ward: "Xã Bình An",
-    street: "Đường Nguyễn Thi Giờ",
-    minPrice: 40000000,
-    maxPrice: 65000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Long Thành",
-    ward: "Xã Long Phước",
-    street: "Ấp Phước Hòa",
-    minPrice: 38000000,
-    maxPrice: 60000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Long Thành",
-    ward: "Xã Đại Phước",
-    street: "Đường Lý Thái Tổ",
-    minPrice: 45000000,
-    maxPrice: 70000000,
-    landType: "Thổ cư",
-  },
-
-  // Huyện Nhơn Trạch
-  {
-    province: "Đồng Nai",
-    district: "Huyện Nhơn Trạch",
-    ward: "Xã Nhơn Trạch",
-    street: "Đường Phạm Văn Thuận",
-    minPrice: 30000000,
-    maxPrice: 50000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Nhơn Trạch",
-    ward: "Xã Phước An",
-    street: "Đường Hùng Vương",
-    minPrice: 28000000,
-    maxPrice: 45000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Nhơn Trạch",
-    ward: "Xã Bình Minh",
-    street: "Đường 65",
-    minPrice: 25000000,
-    maxPrice: 40000000,
-    landType: "Nông nghiệp",
-  },
-
-  // Huyện Thống Nhất
-  {
-    province: "Đồng Nai",
-    district: "Huyện Thống Nhất",
-    ward: "Xã Dầu Giây",
-    street: "Quốc lộ 1A",
-    minPrice: 22000000,
-    maxPrice: 38000000,
-    landType: "Thổ cư",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Thống Nhất",
-    ward: "Xã Gia Kiệm",
-    street: "Ấp Nam Sơn",
-    minPrice: 18000000,
-    maxPrice: 30000000,
-    landType: "Nông nghiệp",
-  },
-  {
-    province: "Đồng Nai",
-    district: "Huyện Thống Nhất",
-    ward: "Xã Thống Nhất",
-    street: "Quốc lộ 20",
-    minPrice: 20000000,
-    maxPrice: 35000000,
-    landType: "Thổ cư",
+    id: 3,
+    streetName: "Đường Cách Mạng Tháng 8",
+    startPoint: "Ngã ba Mũi tàu",
+    endPoint: "Đường Nguyễn Ái Quốc",
+    residential: {
+      currentPrice: 22000000,
+      proposedPrice: 26400000,
+      coefficient: 1.20,
+    },
+    commercial: {
+      currentPrice: 30000000,
+      proposedPrice: 36000000,
+      coefficient: 1.20,
+    },
+    production: {
+      currentPrice: 18000000,
+      proposedPrice: 21600000,
+      coefficient: 1.20,
+    },
   },
 ]
