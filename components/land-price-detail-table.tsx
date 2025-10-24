@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Fragment } from "react"
 import { Download, ChevronUp, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -127,8 +127,8 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
             </thead>
             <tbody>
               {sortedResults.map((item, index) => (
-                <>
-                  <tr key={`row-${index}`} className="border-b border-border hover:bg-muted/50 transition-colors">
+                <Fragment key={`street-${item.id}-${index}`}>
+                  <tr className="border-b border-border hover:bg-muted/50 transition-colors">
                     <td className="px-4 py-3 text-foreground font-medium">{item.id}</td>
                     <td className="px-4 py-3 text-foreground font-medium">{item.streetName}</td>
                     <td className="px-4 py-3 text-foreground text-sm">{item.startPoint}</td>
@@ -221,10 +221,45 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
                             </CardContent>
                           </Card>
                         </div>
+
+                        {/* Các bảng thông tin bổ sung */}
+                        {item.additionalInfo && item.additionalInfo.length > 0 && (
+                          <div className="mt-4 border-t-2 border-border pt-4 space-y-3">
+                            {item.additionalInfo.map((info, infoIndex) => (
+                              <div key={infoIndex} className="bg-card rounded-lg border border-border overflow-hidden">
+                                <div className="flex flex-row">
+                                  {/* Cột trái - Nội dung mô tả */}
+                                  <div className="flex-[2] p-4 border-r border-border">
+                                    <p className="text-sm text-foreground leading-relaxed">{info.title}</p>
+                                  </div>
+
+                                  {/* Cột phải - Thông tin giá */}
+                                  <div className="flex-1 p-4 bg-muted/30 space-y-1">
+                                    <p className="text-xs text-muted-foreground">
+                                      Giá hiện tại:{" "}
+                                      <span className="font-semibold text-foreground">
+                                        {info.currentPrice.toLocaleString("vi-VN")} đ/m²
+                                      </span>
+                                    </p>
+                                    <p className="text-xs text-muted-foreground">
+                                      Giá đề xuất:{" "}
+                                      <span className="font-semibold text-primary">
+                                        {info.proposedPrice.toLocaleString("vi-VN")} đ/m²
+                                      </span>
+                                    </p>
+                                    <p className="text-xs text-muted-foreground">
+                                      Hệ số: <span className="font-semibold text-foreground">{info.coefficient.toFixed(2)}</span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </td>
                   </tr>
-                </>
+                </Fragment>
               ))}
             </tbody>
           </table>

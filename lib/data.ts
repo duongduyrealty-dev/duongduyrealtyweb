@@ -182,6 +182,14 @@ export function getWards(province: string, district: string): string[] {
   return wardData[province]?.[district] || []
 }
 
+// Interface cho thông tin bổ sung
+export interface AdditionalInfo {
+  title: string                 // Tiêu đề/Nội dung mô tả
+  currentPrice: number          // Giá hiện tại
+  proposedPrice: number         // Giá đề xuất
+  coefficient: number           // Hệ số
+}
+
 // Interface cho dữ liệu giá đất chi tiết từ file CSV
 export interface LandPriceDetail {
   id: number                    // TT - Số thứ tự
@@ -204,6 +212,8 @@ export interface LandPriceDetail {
     proposedPrice: number
     coefficient: number
   }
+  // Thông tin bổ sung (mảng các bảng nhỏ)
+  additionalInfo?: AdditionalInfo[]
 }
 
 // Dữ liệu giá đất chi tiết từ file CSV - Phường Long Khánh
@@ -228,6 +238,38 @@ export const landPriceDetailData: LandPriceDetail[] = [
       proposedPrice: 6720000,
       coefficient: 2.8,
     },
+    additionalInfo: [
+      {
+        title: "Vị trí đắc địa, gần trung tâm thành phố, thuận tiện giao thông",
+        currentPrice: 5000000,
+        proposedPrice: 14000000,
+        coefficient: 2.8,
+      },
+      {
+        title: "Khu vực phát triển mạnh, có nhiều tiện ích xung quanh",
+        currentPrice: 4500000,
+        proposedPrice: 12600000,
+        coefficient: 2.8,
+      },
+      {
+        title: "Đường rộng, hạ tầng hoàn thiện, phù hợp kinh doanh",
+        currentPrice: 3800000,
+        proposedPrice: 10640000,
+        coefficient: 2.8,
+      },
+      {
+        title: "Gần trường học, bệnh viện, chợ, thuận tiện sinh hoạt",
+        currentPrice: 4200000,
+        proposedPrice: 11760000,
+        coefficient: 2.8,
+      },
+      {
+        title: "Khu dân cư đông đúc, tiềm năng phát triển cao",
+        currentPrice: 3500000,
+        proposedPrice: 9800000,
+        coefficient: 2.8,
+      },
+    ],
   },
   {
     id: 2,
