@@ -23,9 +23,9 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg md:text-xl font-bold text-foreground">Dương Duy Realty</h1>
-              <p className="text-xs text-muted-foreground">Chuyên bất động sản khu vực Đồng Nai</p>
+            <div>
+              <h1 className="text-base md:text-lg lg:text-xl font-bold text-foreground">Dương Duy Realty</h1>
+              <p className="text-[10px] md:text-xs text-muted-foreground leading-tight">Chuyên bất động sản khu vực Long Khánh - Đồng Nai</p>
             </div>
           </div>
 
