@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, Fragment } from "react"
-import { Download, ChevronUp, ChevronDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ChevronUp, ChevronDown } from "lucide-react"
 import type { LandPriceDetail } from "@/lib/data"
 
 // Helper function để tạo mảng các giá trị không null
@@ -54,26 +53,6 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
     return sortOrder === "asc" ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal)
   })
 
-  const handleDownloadCSV = () => {
-    const csvContent = [
-      ["TT", "Tên đường", "Điểm đầu", "Điểm cuối"],
-      ...sortedResults.map((item) => [
-        item.id,
-        item.streetName,
-        item.startPoint,
-        item.endPoint,
-      ]),
-    ]
-
-    const csvString = csvContent.map((row) => row.join(",")).join("\n")
-    const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" })
-    const link = document.createElement("a")
-    const url = URL.createObjectURL(blob)
-    link.setAttribute("href", url)
-    link.setAttribute("download", `land-price-detail-${new Date().toISOString().split("T")[0]}.csv`)
-    link.click()
-  }
-
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-12">
@@ -104,13 +83,7 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
           <p className="text-sm text-muted-foreground">Giá Hiện Hành | Giá Đề Xuất | Hệ Số</p>
           <p className="text-sm text-muted-foreground">Tìm thấy {results.length} kết quả</p>
         </div>
-        <Button
-          onClick={handleDownloadCSV}
-          className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold flex items-center gap-2"
-        >
-          <Download className="w-4 h-4" />
-          Tải xuống CSV
-        </Button>
+
       </div>
 
       <div className="bg-card rounded-xl border border-border overflow-hidden shadow-lg">

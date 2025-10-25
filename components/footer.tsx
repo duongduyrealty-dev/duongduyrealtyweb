@@ -25,7 +25,9 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/duongduyrealty/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg transition-colors"
               >
                 <Facebook className="w-5 h-5" />
@@ -116,7 +118,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">© 2025 </p>
+            <p className="text-sm text-muted-foreground">© 2025 Developed by Quang Dương Duy</p>
             <p className="text-xs text-muted-foreground"></p>
           </div>
         </div>
