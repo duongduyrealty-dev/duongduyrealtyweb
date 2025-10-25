@@ -3,8 +3,22 @@
 import { useState, Fragment } from "react"
 import { Download, ChevronUp, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import type { LandPriceDetail } from "@/lib/data"
+
+// Helper function để tạo mảng các giá trị không null
+function buildPriceDisplay(currentPrice: number | null | undefined, proposedPrice: number | null | undefined, coefficient: number | null | undefined): string[] {
+  const parts: string[] = []
+  if (currentPrice !== null && currentPrice !== undefined) {
+    parts.push(`${currentPrice.toLocaleString("vi-VN")} đ/m²`)
+  }
+  if (proposedPrice !== null && proposedPrice !== undefined) {
+    parts.push(`${proposedPrice.toLocaleString("vi-VN")} đ/m²`)
+  }
+  if (coefficient !== null && coefficient !== undefined) {
+    parts.push(coefficient.toFixed(2))
+  }
+  return parts
+}
 
 interface LandPriceDetailTableProps {
   results: LandPriceDetail[]
@@ -86,7 +100,8 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
     <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h3 className="text-xl font-bold text-foreground">Dữ liệu giá đất chi tiết</h3>
+          <h3 className="text-xl font-bold text-foreground">Giá đất dự kiến năm 2026</h3>
+          <p className="text-sm text-muted-foreground">Giá Hiện Hành | Giá Đề Xuất | Hệ Số</p>
           <p className="text-sm text-muted-foreground">Tìm thấy {results.length} kết quả</p>
         </div>
         <Button
@@ -128,103 +143,77 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
             <tbody>
               {sortedResults.map((item, index) => (
                 <Fragment key={`street-${item.id}-${index}`}>
-                  <tr className="border-b border-border hover:bg-muted/50 transition-colors">
-                    <td className="px-4 py-3 text-foreground font-medium">{item.id}</td>
-                    <td className="px-4 py-3 text-foreground font-medium">{item.streetName}</td>
-                    <td className="px-4 py-3 text-foreground text-sm">{item.startPoint}</td>
-                    <td className="px-4 py-3 text-foreground text-sm">{item.endPoint}</td>
+                  <tr className="hover:bg-muted/50 transition-colors">
+                    <td className="px-4 py-3 text-foreground font-bold">{item.id}</td>
+                    <td className="px-4 py-3 text-foreground font-bold">{item.streetName}</td>
+                    <td className="px-4 py-3 text-foreground font-bold text-sm">{item.startPoint}</td>
+                    <td className="px-4 py-3 text-foreground font-bold text-sm">{item.endPoint}</td>
                   </tr>
 
                   {/* Hàng thông tin giá đất cho từng đường */}
-                  <tr key={`detail-${index}`}>
+                  <tr key={`detail-${index}`} className="border-b border-border">
                     <td colSpan={4} className="p-0">
-                      <div className="bg-muted/30 p-4">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          {/* Đất ở */}
-                          <Card className="border-2">
-                            <CardHeader className="pb-3">
-                              <CardTitle className="text-lg text-center">Đất ở</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-2">
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Giá hiện tại:</span>
-                                <span className="font-semibold text-foreground">
-                                  {item.residential?.currentPrice.toLocaleString("vi-VN") || "N/A"} đ/m²
-                                </span>
+                      <div className="bg-muted/30 px-4 pb-4 pt-2">
+                        {/* Header với 3 tabs */}
+                        <div className="space-y-2 mb-4">
+                          {/* Tab Đất ở */}
+                          {item.residential && buildPriceDisplay(item.residential.currentPrice, item.residential.proposedPrice, item.residential.coefficient).length > 0 && (
+                            <div className="bg-[#FFC107] text-white rounded-lg px-4 py-3">
+                              <div className="flex items-center justify-between gap-4">
+                                <div className="font-bold text-sm whitespace-nowrap">ĐẤT Ở</div>
+                                <div className="flex items-center font-bold gap-3 text-xs">
+                                  {buildPriceDisplay(item.residential.currentPrice, item.residential.proposedPrice, item.residential.coefficient).map((part, idx, arr) => (
+                                    <Fragment key={idx}>
+                                      <span>{part}</span>
+                                      {idx < arr.length - 1 && <span>|</span>}
+                                    </Fragment>
+                                  ))}
+                                </div>
                               </div>
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Giá đề xuất:</span>
-                                <span className="font-semibold text-primary">
-                                  {item.residential?.proposedPrice.toLocaleString("vi-VN") || "N/A"} đ/m²
-                                </span>
-                              </div>
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Hệ số:</span>
-                                <span className="font-semibold text-foreground">
-                                  {item.residential?.coefficient.toFixed(2) || "N/A"}
-                                </span>
-                              </div>
-                            </CardContent>
-                          </Card>
+                            </div>
+                          )}
 
-                          {/* Đất Thương mại - Dịch vụ */}
-                          <Card className="border-2">
-                            <CardHeader className="pb-3">
-                              <CardTitle className="text-lg text-center">Đất Thương mại - Dịch vụ</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-2">
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Giá hiện tại:</span>
-                                <span className="font-semibold text-foreground">
-                                  {item.commercial?.currentPrice.toLocaleString("vi-VN") || "N/A"} đ/m²
-                                </span>
+                          {/* Tab Đất TMDV */}
+                          {item.commercial && buildPriceDisplay(item.commercial.currentPrice, item.commercial.proposedPrice, item.commercial.coefficient).length > 0 && (
+                            <div className="bg-[#F44336] text-white rounded-lg px-4 py-3">
+                              <div className="flex items-center justify-between gap-4">
+                                <div className="font-bold text-sm whitespace-nowrap">ĐẤT TMDV</div>
+                                <div className="flex items-center font-bold gap-3 text-xs">
+                                  {buildPriceDisplay(item.commercial.currentPrice, item.commercial.proposedPrice, item.commercial.coefficient).map((part, idx, arr) => (
+                                    <Fragment key={idx}>
+                                      <span>{part}</span>
+                                      {idx < arr.length - 1 && <span>|</span>}
+                                    </Fragment>
+                                  ))}
+                                </div>
                               </div>
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Giá đề xuất:</span>
-                                <span className="font-semibold text-primary">
-                                  {item.commercial?.proposedPrice.toLocaleString("vi-VN") || "N/A"} đ/m²
-                                </span>
-                              </div>
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Hệ số:</span>
-                                <span className="font-semibold text-foreground">
-                                  {item.commercial?.coefficient.toFixed(2) || "N/A"}
-                                </span>
-                              </div>
-                            </CardContent>
-                          </Card>
+                            </div>
+                          )}
 
-                          {/* Đất Sản xuất - Kinh doanh */}
-                          <Card className="border-2">
-                            <CardHeader className="pb-3">
-                              <CardTitle className="text-lg text-center">Đất Sản xuất - Kinh doanh</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-2">
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Giá hiện tại:</span>
-                                <span className="font-semibold text-foreground">
-                                  {item.production?.currentPrice.toLocaleString("vi-VN") || "N/A"} đ/m²
-                                </span>
+                          {/* Tab Đất SXKD */}
+                          {item.production && buildPriceDisplay(item.production.currentPrice, item.production.proposedPrice, item.production.coefficient).length > 0 && (
+                            <div className="bg-[#4CAF50] text-white rounded-lg px-4 py-3">
+                              <div className="flex items-center justify-between gap-4">
+                                <div className="font-bold text-sm whitespace-nowrap">ĐẤT SXKD</div>
+                                <div className="flex items-center font-bold gap-3 text-xs">
+                                  {buildPriceDisplay(item.production.currentPrice, item.production.proposedPrice, item.production.coefficient).map((part, idx, arr) => (
+                                    <Fragment key={idx}>
+                                      <span>{part}</span>
+                                      {idx < arr.length - 1 && <span>|</span>}
+                                    </Fragment>
+                                  ))}
+                                </div>
                               </div>
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Giá đề xuất:</span>
-                                <span className="font-semibold text-primary">
-                                  {item.production?.proposedPrice.toLocaleString("vi-VN") || "N/A"} đ/m²
-                                </span>
-                              </div>
-                              <div className="flex justify-between items-center">
-                                <span className="text-sm text-muted-foreground">Hệ số:</span>
-                                <span className="font-semibold text-foreground">
-                                  {item.production?.coefficient.toFixed(2) || "N/A"}
-                                </span>
-                              </div>
-                            </CardContent>
-                          </Card>
+                            </div>
+                          )}
                         </div>
 
                         {/* Các bảng thông tin bổ sung */}
                         {item.additionalInfo && item.additionalInfo.length > 0 && (
-                          <div className="mt-4 border-t-2 border-border pt-4 space-y-3">
+                          <div className="mt-4 space-y-3">
+                          <div className="mb-2">
+                            <p className="text-sm font-bold text-center">Thông tin chi tiết ( Giá Đề Xuất )</p>
+                          </div>
                             {item.additionalInfo.map((info, infoIndex) => (
                               <div key={infoIndex} className="bg-card rounded-lg border border-border overflow-hidden">
                                 <div className="flex flex-row">
@@ -233,23 +222,60 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
                                     <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{info.title}</p>
                                   </div>
 
-                                  {/* Cột phải - Thông tin giá */}
-                                  <div className="flex-1 p-4 bg-muted/30 space-y-1">
-                                    <p className="text-xs text-muted-foreground">
-                                      Giá hiện tại:{" "}
-                                      <span className="font-semibold text-foreground">
-                                        {info.currentPrice.toLocaleString("vi-VN")} đ/m²
-                                      </span>
-                                    </p>
-                                    <p className="text-xs text-muted-foreground">
-                                      Giá đề xuất:{" "}
-                                      <span className="font-semibold text-primary">
-                                        {info.proposedPrice.toLocaleString("vi-VN")} đ/m²
-                                      </span>
-                                    </p>
-                                    <p className="text-xs text-muted-foreground">
-                                      Hệ số: <span className="font-semibold text-foreground">{info.coefficient.toFixed(2)}</span>
-                                    </p>
+                                  {/* Cột phải - 3 tabs thông tin giá */}
+                                  <div className="flex-1 p-3 bg-muted/30">
+                                    <div className="space-y-2">
+                                      {/* Tab Đất ở - chỉ hiển thị nếu có data */}
+                                      {info.residential && buildPriceDisplay(info.residential.currentPrice, info.residential.proposedPrice, info.residential.coefficient).length > 0 && (
+                                        <div className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-white rounded-lg px-3 py-2">
+                                          <div className="flex items-center justify-between gap-2">
+                                            <div className="font-bold text-xs whitespace-nowrap">ĐẤT Ở</div>
+                                            <div className="flex items-center font-bold gap-2 text-[10px]">
+                                              {buildPriceDisplay(info.residential.currentPrice, info.residential.proposedPrice, info.residential.coefficient).map((part, idx, arr) => (
+                                                <Fragment key={idx}>
+                                                  <span>{part}</span>
+                                                  {idx < arr.length - 1 && <span>|</span>}
+                                                </Fragment>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+
+                                      {/* Tab Đất TMDV - chỉ hiển thị nếu có data */}
+                                      {info.commercial && buildPriceDisplay(info.commercial.currentPrice, info.commercial.proposedPrice, info.commercial.coefficient).length > 0 && (
+                                        <div className="bg-gradient-to-r from-red-600 to-red-500 text-white rounded-lg px-3 py-2">
+                                          <div className="flex items-center justify-between gap-2">
+                                            <div className="font-bold text-xs whitespace-nowrap">ĐẤT TMDV</div>
+                                            <div className="flex items-center font-bold gap-2 text-[10px]">
+                                              {buildPriceDisplay(info.commercial.currentPrice, info.commercial.proposedPrice, info.commercial.coefficient).map((part, idx, arr) => (
+                                                <Fragment key={idx}>
+                                                  <span>{part}</span>
+                                                  {idx < arr.length - 1 && <span>|</span>}
+                                                </Fragment>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+
+                                      {/* Tab Đất SXKD - chỉ hiển thị nếu có data */}
+                                      {info.production && buildPriceDisplay(info.production.currentPrice, info.production.proposedPrice, info.production.coefficient).length > 0 && (
+                                        <div className="bg-gradient-to-r from-green-600 to-green-500 text-white rounded-lg px-3 py-2">
+                                          <div className="flex items-center justify-between gap-2">
+                                            <div className="font-bold text-xs whitespace-nowrap">ĐẤT SXKD</div>
+                                            <div className="flex items-center font-bold gap-2 text-[10px]">
+                                              {buildPriceDisplay(info.production.currentPrice, info.production.proposedPrice, info.production.coefficient).map((part, idx, arr) => (
+                                                <Fragment key={idx}>
+                                                  <span>{part}</span>
+                                                  {idx < arr.length - 1 && <span>|</span>}
+                                                </Fragment>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </div>
                                   </div>
                                 </div>
                               </div>

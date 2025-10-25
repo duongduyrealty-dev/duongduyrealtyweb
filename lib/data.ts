@@ -185,9 +185,21 @@ export function getWards(province: string, district: string): string[] {
 // Interface cho thông tin bổ sung
 export interface AdditionalInfo {
   title: string                 // Tiêu đề/Nội dung mô tả
-  currentPrice: number          // Giá hiện tại
-  proposedPrice: number         // Giá đề xuất
-  coefficient: number           // Hệ số
+  residential?: {               // Đất ở
+    currentPrice: number | null
+    proposedPrice: number | null
+    coefficient: number | null
+  }
+  commercial?: {                // Đất thương mại - dịch vụ
+    currentPrice: number | null
+    proposedPrice: number | null
+    coefficient: number | null
+  }
+  production?: {                // Đất sản xuất - kinh doanh
+    currentPrice: number | null
+    proposedPrice: number | null
+    coefficient: number | null
+  }
 }
 
 // Interface cho dữ liệu giá đất chi tiết từ file CSV
@@ -198,19 +210,19 @@ export interface LandPriceDetail {
   endPoint: string              // Điểm cuối
   // Thông tin giá đất theo loại
   residential?: {               // Đất ở
-    currentPrice: number
-    proposedPrice: number
-    coefficient: number
+    currentPrice: number | null
+    proposedPrice: number | null
+    coefficient: number | null
   }
   commercial?: {                // Đất thương mại - dịch vụ
-    currentPrice: number
-    proposedPrice: number
-    coefficient: number
+    currentPrice: number | null
+    proposedPrice: number | null
+    coefficient: number | null
   }
   production?: {                // Đất sản xuất - kinh doanh
-    currentPrice: number
-    proposedPrice: number
-    coefficient: number
+    currentPrice: number | null
+    proposedPrice: number | null
+    coefficient: number | null
   }
   // Thông tin bổ sung (mảng các bảng nhỏ)
   additionalInfo?: AdditionalInfo[]
@@ -241,76 +253,505 @@ export const landPriceDetailData: LandPriceDetail[] = [
     additionalInfo: [
       {
         title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường Quốc lộ 1 - Xuân Lập đến Đường 21/4 đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",
-        currentPrice: 0,
-        proposedPrice: 14000000,
-        coefficient: 2.8,
+        residential: {
+          currentPrice: null,
+          proposedPrice: 5600000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 3920000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 3360000,
+          coefficient: null,
+        },
       },
       {
-        title: "Khu vực phát triển mạnh, có nhiều tiện ích xung quanh",
-        currentPrice: 4500000,
-        proposedPrice: 12600000,
-        coefficient: 2.8,
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường Quốc lộ 1 - Xuân Lập đến Đường 21/4 đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 4200000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 2940000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2520000,
+          coefficient: null,
+        },
       },
       {
-        title: "Đường rộng, hạ tầng hoàn thiện, phù hợp kinh doanh",
-        currentPrice: 3800000,
-        proposedPrice: 10640000,
-        coefficient: 2.8,
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường Quốc lộ 1 - Xuân Lập đến Đường 21/4 đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông >200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 2520000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 1764000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 1512000,
+          coefficient: null,
+        },
       },
       {
-        title: "Gần trường học, bệnh viện, chợ, thuận tiện sinh hoạt",
-        currentPrice: 4200000,
-        proposedPrice: 11760000,
-        coefficient: 2.8,
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường Quốc lộ 1 - Xuân Lập đến Đường 21/4 đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 4480000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 3136000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2688000,
+          coefficient: null,
+        },
       },
       {
-        title: "Khu dân cư đông đúc, tiềm năng phát triển cao",
-        currentPrice: 3500000,
-        proposedPrice: 9800000,
-        coefficient: 2.8,
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường Quốc lộ 1 - Xuân Lập đến Đường 21/4 đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 3360000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 2352000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2016000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường Quốc lộ 1 - Xuân Lập đến Đường 21/4 đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông > 200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 2016000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 1411000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 1210000,
+          coefficient: null,
+        },
       },
     ],
   },
   {
     id: 2,
-    streetName: "Đường Nguyễn Trãi",
-    startPoint: "Ngã ba Hùng Vương",
-    endPoint: "Đường Nguyễn Thị Minh Khai",
+    streetName: "Đường Hồng Thập Tự",
+    startPoint: "Đường 21/4",
+    endPoint: "Đường Hùng Vương",
     residential: {
-      currentPrice: 5000000,
-      proposedPrice: 14000000,
+      currentPrice: 4000000,
+      proposedPrice: 11200000,
       coefficient: 2.8,
     },
     commercial: {
-      currentPrice: 3500000,
-      proposedPrice: 9800000,
+      currentPrice: 2800000,
+      proposedPrice: 7840000,
       coefficient: 2.8,
     },
     production: {
-      currentPrice: 3000000,
-      proposedPrice: 8400000,
+      currentPrice: 2400000,
+      proposedPrice: 6720000,
       coefficient: 2.8,
     },
+    additionalInfo: [
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường 21/4 đến Đường Hùng Vương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 5600000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 3920000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 3360000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường 21/4 đến Đường Hùng Vương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 4200000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 2940000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2520000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường 21/4 đến Đường Hùng Vương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông >200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 2520000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 1764000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 1512000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường 21/4 đến Đường Hùng Vương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 4480000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 3136000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2688000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường 21/4 đến Đường Hùng Vương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 3360000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 2352000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2016000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường 21/4 đến Đường Hùng Vương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông > 200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 2016000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 1411000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 1210000,
+          coefficient: null,
+        },
+      }
+    ]
   },
   {
     id: 3,
-    streetName: "Đường Cách Mạng Tháng 8",
-    startPoint: "Ngã ba Mũi tàu",
-    endPoint: "Đường Nguyễn Ái Quốc",
+    streetName: "Đường Hồng Thập Tự",
+    startPoint: "Đường Hùng Vương",
+    endPoint: "Đường Hồ Thị Hương",
     residential: {
-      currentPrice: 22000000,
-      proposedPrice: 26400000,
-      coefficient: 1.20,
+      currentPrice: 4000000,
+      proposedPrice: 11200000,
+      coefficient: 2.8,
     },
     commercial: {
-      currentPrice: 30000000,
-      proposedPrice: 36000000,
-      coefficient: 1.20,
+      currentPrice: 2800000,
+      proposedPrice: 7840000,
+      coefficient: 2.8,
     },
     production: {
-      currentPrice: 18000000,
-      proposedPrice: 21600000,
-      coefficient: 1.20,
+      currentPrice: 2400000,
+      proposedPrice: 6720000,
+      coefficient: 2.8,
     },
+    additionalInfo: [
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 5600000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 3920000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 3360000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 4200000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 2940000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2520000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hồng Thập Tự đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông >200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 2800000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 1960000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 1680000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 4480000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 3136000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2688000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 3360000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 2352000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 2016000,
+          coefficient: null,
+        },
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hồng Thập Tự đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông > 200m.",
+        residential: {
+          currentPrice: null,
+          proposedPrice: 2040000,
+          coefficient: null,
+        },
+        commercial: {
+          currentPrice: null,
+          proposedPrice: 1568000,
+          coefficient: null,
+        },
+        production: {
+          currentPrice: null,
+          proposedPrice: 1344000,
+          coefficient: null,
+        },
+      }
+    ]
   },
+  {
+    id: 1,
+    streetName: "Đường Hoàng Diệu",
+    startPoint: "Đường Hồ Thị Hương",
+    endPoint: "Đường Ngô Quyền",
+    residential: {
+      currentPrice: 3200000,
+      proposedPrice: 8960000,
+      coefficient: 2.8,
+    },
+    commercial: {
+      currentPrice: 2240000,
+      proposedPrice: 6272000,
+      coefficient: 2.8,
+    },
+    production: {
+      currentPrice: 1920000,
+      proposedPrice: 5376000,
+      coefficient: 2.8,
+    },
+    additionalInfo: [
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hoàng Diệu đoạn từ Đường Hồ Thị Hương đến Đường Ngô Quyền đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 4480000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 3136000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2688000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hoàng Diệu đoạn từ Đường Hồ Thị Hương đến Đường Ngô Quyền đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 3640000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2548000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2184000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Hoàng Diệu đoạn từ Đường Hồ Thị Hương đến Đường Ngô Quyền đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông >200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2660000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 1862000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1596000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hoàng Diệu đoạn từ Đường Hồ Thị Hương đến Đường Ngô Quyền đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 3584000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2509000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2150000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hoàng Diệu đoạn từ Đường Hồ Thị Hương đến Đường Ngô Quyền đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2192000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2038000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1747000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Hoàng Diệu đoạn từ Đường Hồ Thị Hương đến Đường Ngô Quyền đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông > 200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2128000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 1490000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1277000,
+            coefficient: null,
+        }
+      }
+    ]
+  }
 ]
