@@ -131,7 +131,7 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
                         <div className="space-y-2 mb-4">
                           {/* Tab Đất ở */}
                           {item.residential && buildPriceDisplay(item.residential.currentPrice, item.residential.proposedPrice, item.residential.coefficient).length > 0 && (
-                            <div className="bg-[#FFC107] text-white rounded-lg px-4 py-3">
+                            <div className="bg-[#8BC34A] text-white rounded-lg px-4 py-3">
                               <div className="flex items-center justify-between gap-4">
                                 <div className="font-bold text-sm whitespace-nowrap">ĐẤT Ở</div>
                                 <div className="flex items-center font-bold gap-3 text-xs">
@@ -148,7 +148,7 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
 
                           {/* Tab Đất TMDV */}
                           {item.commercial && buildPriceDisplay(item.commercial.currentPrice, item.commercial.proposedPrice, item.commercial.coefficient).length > 0 && (
-                            <div className="bg-[#F44336] text-white rounded-lg px-4 py-3">
+                            <div className="bg-[#FF9800] text-white rounded-lg px-4 py-3">
                               <div className="flex items-center justify-between gap-4">
                                 <div className="font-bold text-sm whitespace-nowrap">ĐẤT TMDV</div>
                                 <div className="flex items-center font-bold gap-3 text-xs">
@@ -165,7 +165,7 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
 
                           {/* Tab Đất SXKD */}
                           {item.production && buildPriceDisplay(item.production.currentPrice, item.production.proposedPrice, item.production.coefficient).length > 0 && (
-                            <div className="bg-[#4CAF50] text-white rounded-lg px-4 py-3">
+                            <div className="bg-[#607D8B] text-white rounded-lg px-4 py-3">
                               <div className="flex items-center justify-between gap-4">
                                 <div className="font-bold text-sm whitespace-nowrap">ĐẤT SXKD</div>
                                 <div className="flex items-center font-bold gap-3 text-xs">
@@ -201,7 +201,7 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
                                     <div className="space-y-2">
                                       {/* Tab Đất ở - chỉ hiển thị nếu có data */}
                                       {info.residential && buildPriceDisplay(info.residential.currentPrice, info.residential.proposedPrice, info.residential.coefficient).length > 0 && (
-                                        <div className="bg-[#FFC107] text-white rounded-lg px-4 py-3">
+                                        <div className="bg-[#8BC34A] text-white rounded-lg px-4 py-3">
                                           <div className="flex items-center justify-between gap-4">
                                             <div className="font-bold text-sm whitespace-nowrap">ĐẤT Ở</div>
                                             <div className="flex items-center font-bold gap-3 text-xs">
@@ -218,7 +218,7 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
 
                                       {/* Tab Đất TMDV - chỉ hiển thị nếu có data */}
                                       {info.commercial && buildPriceDisplay(info.commercial.currentPrice, info.commercial.proposedPrice, info.commercial.coefficient).length > 0 && (
-                                        <div className="bg-[#F44336] text-white rounded-lg px-4 py-3">
+                                        <div className="bg-[#FF9800] text-white rounded-lg px-4 py-3">
                                           <div className="flex items-center justify-between gap-4">
                                             <div className="font-bold text-sm whitespace-nowrap">ĐẤT TMDV</div>
                                             <div className="flex items-center font-bold gap-3 text-xs">
@@ -235,7 +235,7 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
 
                                       {/* Tab Đất SXKD - chỉ hiển thị nếu có data */}
                                       {info.production && buildPriceDisplay(info.production.currentPrice, info.production.proposedPrice, info.production.coefficient).length > 0 && (
-                                        <div className="bg-[#4CAF50] text-white rounded-lg px-4 py-3">
+                                        <div className="bg-[#607D8B] text-white rounded-lg px-4 py-3">
                                           <div className="flex items-center justify-between gap-4">
                                             <div className="font-bold text-sm whitespace-nowrap">ĐẤT SXKD</div>
                                             <div className="flex items-center font-bold gap-3 text-xs">
