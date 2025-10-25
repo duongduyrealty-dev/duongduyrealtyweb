@@ -211,26 +211,27 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
                         {/* Các bảng thông tin bổ sung */}
                         {item.additionalInfo && item.additionalInfo.length > 0 && (
                           <div className="mt-4 space-y-3">
-                          <div className="mb-2">
-                            <p className="text-sm font-bold text-center">Thông tin chi tiết ( Giá Đề Xuất )</p>
-                          </div>
+                            <div className="mb-2">
+                              <p className="text-sm font-bold text-center">Thông tin chi tiết ( Giá Đề Xuất )</p>
+                            </div>
                             {item.additionalInfo.map((info, infoIndex) => (
                               <div key={infoIndex} className="bg-card rounded-lg border border-border overflow-hidden">
-                                <div className="flex flex-row">
-                                  {/* Cột trái - Nội dung mô tả */}
-                                  <div className="flex-[2] p-4 border-r border-border">
+                                {/* Layout responsive: flex-row trên desktop, flex-col trên mobile */}
+                                <div className="flex flex-col md:flex-row">
+                                  {/* Nội dung mô tả - full width trên mobile, flex-[2] trên desktop */}
+                                  <div className="md:flex-[2] p-4 md:border-r border-border">
                                     <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{info.title}</p>
                                   </div>
 
-                                  {/* Cột phải - 3 tabs thông tin giá */}
-                                  <div className="flex-1 p-3 bg-muted/30">
+                                  {/* 3 tabs thông tin giá - full width trên mobile, flex-1 trên desktop */}
+                                  <div className="md:flex-1 p-3 bg-muted/30">
                                     <div className="space-y-2">
                                       {/* Tab Đất ở - chỉ hiển thị nếu có data */}
                                       {info.residential && buildPriceDisplay(info.residential.currentPrice, info.residential.proposedPrice, info.residential.coefficient).length > 0 && (
-                                        <div className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-white rounded-lg px-3 py-2">
-                                          <div className="flex items-center justify-between gap-2">
-                                            <div className="font-bold text-xs whitespace-nowrap">ĐẤT Ở</div>
-                                            <div className="flex items-center font-bold gap-2 text-[10px]">
+                                        <div className="bg-[#FFC107] text-white rounded-lg px-4 py-3">
+                                          <div className="flex items-center justify-between gap-4">
+                                            <div className="font-bold text-sm whitespace-nowrap">ĐẤT Ở</div>
+                                            <div className="flex items-center font-bold gap-3 text-xs">
                                               {buildPriceDisplay(info.residential.currentPrice, info.residential.proposedPrice, info.residential.coefficient).map((part, idx, arr) => (
                                                 <Fragment key={idx}>
                                                   <span>{part}</span>
@@ -244,10 +245,10 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
 
                                       {/* Tab Đất TMDV - chỉ hiển thị nếu có data */}
                                       {info.commercial && buildPriceDisplay(info.commercial.currentPrice, info.commercial.proposedPrice, info.commercial.coefficient).length > 0 && (
-                                        <div className="bg-gradient-to-r from-red-600 to-red-500 text-white rounded-lg px-3 py-2">
-                                          <div className="flex items-center justify-between gap-2">
-                                            <div className="font-bold text-xs whitespace-nowrap">ĐẤT TMDV</div>
-                                            <div className="flex items-center font-bold gap-2 text-[10px]">
+                                        <div className="bg-[#F44336] text-white rounded-lg px-4 py-3">
+                                          <div className="flex items-center justify-between gap-4">
+                                            <div className="font-bold text-sm whitespace-nowrap">ĐẤT TMDV</div>
+                                            <div className="flex items-center font-bold gap-3 text-xs">
                                               {buildPriceDisplay(info.commercial.currentPrice, info.commercial.proposedPrice, info.commercial.coefficient).map((part, idx, arr) => (
                                                 <Fragment key={idx}>
                                                   <span>{part}</span>
@@ -261,10 +262,10 @@ export default function LandPriceDetailTable({ results, isLoading }: LandPriceDe
 
                                       {/* Tab Đất SXKD - chỉ hiển thị nếu có data */}
                                       {info.production && buildPriceDisplay(info.production.currentPrice, info.production.proposedPrice, info.production.coefficient).length > 0 && (
-                                        <div className="bg-gradient-to-r from-green-600 to-green-500 text-white rounded-lg px-3 py-2">
-                                          <div className="flex items-center justify-between gap-2">
-                                            <div className="font-bold text-xs whitespace-nowrap">ĐẤT SXKD</div>
-                                            <div className="flex items-center font-bold gap-2 text-[10px]">
+                                        <div className="bg-[#4CAF50] text-white rounded-lg px-4 py-3">
+                                          <div className="flex items-center justify-between gap-4">
+                                            <div className="font-bold text-sm whitespace-nowrap">ĐẤT SXKD</div>
+                                            <div className="flex items-center font-bold gap-3 text-xs">
                                               {buildPriceDisplay(info.production.currentPrice, info.production.proposedPrice, info.production.coefficient).map((part, idx, arr) => (
                                                 <Fragment key={idx}>
                                                   <span>{part}</span>
