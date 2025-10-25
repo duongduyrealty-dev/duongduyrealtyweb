@@ -753,5 +753,394 @@ export const landPriceDetailData: LandPriceDetail[] = [
         }
       }
     ]
+  },
+  {
+    id: 1,
+    streetName: "Đường Trần Phú",
+    startPoint: "Đường Hùng Vương",
+    endPoint: "Đường Hồ Thị Hương",
+    residential: {
+      currentPrice: 7200000,
+      proposedPrice: 19080000,
+      coefficient: 2.65,
+    },
+    commercial: {
+      currentPrice: 5040000,
+      proposedPrice: 13356000,
+      coefficient: 2.7,
+    },
+    production: {
+      currentPrice: 4320000,
+      proposedPrice: 11448000,
+      coefficient: 2.7,
+    },
+    additionalInfo: [
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 7950000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 5565000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 4470000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 6625000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 4638000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 3975000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông >200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 4505000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 3154000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2703000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 6360000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 4452000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 3816000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 5300000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 3710000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 3180000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Đường Hùng Vương đến Đường Hồ Thị Hương đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông > 200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 3604000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2523000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2162000,
+            coefficient: null,
+        }
+      }
+    ]
+  },
+  {
+    id: 2,
+    streetName: "Đường Trần Phú",
+    startPoint: "Đường Hồ Thị Hương",
+    endPoint: "Từ đường Hồ Thị Hương vào 200m",
+    residential: {
+      currentPrice: 4500000,
+      proposedPrice: 12600000,
+      coefficient: 2.8,
+    },
+    commercial: {
+      currentPrice: 3150000,
+      proposedPrice: 8820000,
+      coefficient: 2.8,
+    },
+    production: {
+      currentPrice: 2700000,
+      proposedPrice: 7560000,
+      coefficient: 2.8,
+    },
+    additionalInfo: [
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Đường Hồ Thị Hương đến Từ đường Hồ Thị Hương vào 200m đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 4480000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 3136000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2688000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Đường Hồ Thị Hương đến Từ đường Hồ Thị Hương vào 200m đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 3640000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2584000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2184000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Đường Hồ Thị Hương đến Từ đường Hồ Thị Hương vào 200m đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông >200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2660000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 1862000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1596000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Đường Hồ Thị Hương đến Từ đường Hồ Thị Hương vào 200m đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 3584000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2509000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2150000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Đường Hồ Thị Hương đến Từ đường Hồ Thị Hương vào 200m đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2912000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2038000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1747000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Đường Hồ Thị Hương đến Từ đường Hồ Thị Hương vào 200m đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông > 200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2128000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 1490000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1277000,
+            coefficient: null,
+        }
+      }
+    ]
+  },
+  {
+    id: 3,
+    streetName: "Đường Trần Phú",
+    startPoint: "Từ đường Hồ Thị Hương vào 200m",
+    endPoint: "Giáp ranh xã Bàu Trâm",
+    residential: {
+      currentPrice: 2600000,
+      proposedPrice: 7280000,
+      coefficient: 2.8,
+    },
+    commercial: {
+      currentPrice: 1820000,
+      proposedPrice: 5096000,
+      coefficient: 2.8,
+    },
+    production: {
+      currentPrice: 1560000,
+      proposedPrice: 4368000,
+      coefficient: 2.8,
+    },
+    additionalInfo: [
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Từ đường Hồ Thị Hương vào 200m đến Giáp ranh xã Bàu Trâm đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 3640000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2548000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 2184000,
+            coefficient: null,
+        }
+      },
+      {
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Từ đường Hồ Thị Hương vào 200m đến Giáp ranh xã Bàu Trâm đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 3080000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2156000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1848000,
+            coefficient: null,
+        }
+      },{
+        title: "Các tuyến đường giao thông đấu nối trực tiếp ra Đường Trần Phú đoạn từ Từ đường Hồ Thị Hương vào 200m đến Giáp ranh xã Bàu Trâm đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông >200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2660000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 1862000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1596000,
+            coefficient: null,
+        }
+      },{
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Từ đường Hồ Thị Hương vào 200m đến Giáp ranh xã Bàu Trâm đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông ≤600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông ≤400m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2912000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 2038000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1747000,
+            coefficient: null,
+        }
+      },{
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Từ đường Hồ Thị Hương vào 200m đến Giáp ranh xã Bàu Trâm đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng ≥5m, cách đường giao thông >600m.\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông từ >400m đến ≤600m.\n- Có bề rộng <3m, cách đường giao thông ≤200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2464000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 1725000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1478000,
+            coefficient: null,
+        }
+      },{
+        title: "Các tuyến đường giao thông không đấu nối trực tiếp và thông ra Đường Trần Phú đoạn từ Từ đường Hồ Thị Hương vào 200m đến Giáp ranh xã Bàu Trâm đã được đầu tư mặt đường nhựa, bê tông xi măng:\n- Có bề rộng từ ≥3m đến <5m, cách đường giao thông >600m.\n- Có bề rộng <3m, cách đường giao thông > 200m.",                
+          residential: {               
+          currentPrice: null,
+          proposedPrice: 2128000,
+          coefficient: null,
+        },
+          commercial: {                
+            currentPrice: null,
+            proposedPrice: 1490000,
+            coefficient: null,
+        },
+          production: {                
+            currentPrice: null,
+            proposedPrice: 1277000,
+            coefficient: null,
+        }
+      }
+    ]
   }
 ]
