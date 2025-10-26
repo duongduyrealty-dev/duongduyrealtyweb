@@ -1,6 +1,7 @@
 "use client"
 
 import { Facebook, MapPin, Phone, Mail, Instagram } from "lucide-react"
+import PhoneAction from "@/components/phone-action"
 import Image from "next/image"
 
 export default function Footer() {
@@ -103,26 +104,9 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <a
-                  href="https://zalo.me/0964198005"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  aria-label="Gọi hoặc mở Zalo"
-                  onClick={(e) => {
-                    // Kiểm tra thiết bị trong sự kiện để tránh SSR
-                    const ua = typeof navigator !== "undefined" ? navigator.userAgent || "" : ""
-                    const isMobile = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(ua)
-                    if (isMobile) {
-                      e.preventDefault()
-                      // Chuyển sang gọi trên thiết bị di động
-                      window.location.href = "tel:+84964198005"
-                    }
-                    // Trên desktop để mặc định sẽ mở Zalo web qua href
-                  }}
-                >
-                  (+84)964.198.005
-                </a>
+                <div className="text-sm text-muted-foreground">
+                  <PhoneAction phone="+84964198005" display="(+84)964.198.005" showIcon={false} />
+                </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />

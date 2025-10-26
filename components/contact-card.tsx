@@ -1,6 +1,7 @@
 "use client"
 
 import { Facebook, Instagram, MapPin, Mail, Phone } from "lucide-react"
+import PhoneAction from "@/components/phone-action"
 
 export default function ContactCard() {
   return (
@@ -15,8 +16,10 @@ export default function ContactCard() {
               <Phone className="w-5 h-5 text-foreground" />
             </div>
             <div>
-              <p className="text-sm font-medium">Điện Thoại</p>
-              <p className="text-sm text-muted-foreground">(+84) 964.198.005</p>
+              <p className="text-sm font-medium">Điện Thoại / Zalo</p>
+              <div className="text-sm text-muted-foreground mt-0.5">
+                <PhoneAction phone="+84964198005" display="(+84) 964.198.005" showIcon={false} />
+              </div>
             </div>
           </li>
 

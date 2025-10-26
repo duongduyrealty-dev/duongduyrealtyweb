@@ -47,7 +47,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold">Liên Hệ Với Chúng Tôi</h2>
-            <p className="text-sm text-muted-foreground mt-2">Chúng tôi sẵn sàng trả lời mọi câu hỏi của bạn. Hãy liên hệ với chúng tôi ngay hôm nay.</p>
+            <p className="text-sm text-muted-foreground mt-2">Chúng tôi luôn sẵn sàng trả lời mọi câu hỏi của bạn về lĩnh vực đầu tư Bất Động Sản. Hãy liên hệ với chúng tôi ngay hôm nay.</p>
           </div>
 
           <div className="border-t border-border mb-8" />
@@ -69,12 +69,12 @@ export default function ContactPage() {
 
                   <div>
                     <label className="block text-sm font-medium mb-1">Email *</label>
-                    <Input placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <Input placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-1">Số Điện Thoại *</label>
-                    <Input placeholder="(+84) 964.198.005" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    <Input placeholder="Ví dụ: 0964.198.005" value={phone} onChange={(e) => setPhone(e.target.value)} />
                   </div>
 
                   <div>
