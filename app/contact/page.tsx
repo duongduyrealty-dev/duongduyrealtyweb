@@ -10,21 +10,72 @@ import { Button } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/hooks/use-toast"
 
+const isValidEmail = (email: string) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
+
+const isValidVietnamesePhone = (phone: string) => {
+  // Định dạng số điện thoại Việt Nam:
+  // - Bắt đầu bằng 03, 05, 07, 08, 09
+  // - Theo sau bởi 8 chữ số
+  const phoneRegex = /^(03|05|07|08|09)[0-9]{8}$/
+  // Loại bỏ khoảng trắng, dấu gạch ngang và dấu chấm
+  const cleanPhone = phone.replace(/[\s.-]/g, '')
+  return phoneRegex.test(cleanPhone)
+}
+
+const isValidName = (name: string) => {
+  return name.trim().length >= 2
+}
+
+const isValidMessage = (message: string) => {
+  return message.trim().length > 0
+}
+
 export default function ContactPage() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
-
+  const [errors, setErrors] = useState<{ [key: string]: string }>({})
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Hàm validate form
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {}
+
+    if (!isValidName(name)) {
+      newErrors.name = 'Tên phải có ít nhất 2 ký tự'
+    }
+
+    if (!isValidEmail(email)) {
+      newErrors.email = 'Email không hợp lệ'
+    }
+
+    if (!isValidVietnamesePhone(phone)) {
+      newErrors.phone = 'Vui lòng nhập số điện thoại hợp lệ'
+    }
+
+    if (!isValidMessage(message)) {
+      newErrors.message = 'Vui lòng nhập nội dung tin nhắn'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // basic validation
-    if (!name || !email || !phone || !message) {
-      toast({ title: "Thiếu thông tin", description: "Vui lòng điền đầy đủ các trường có dấu *." })
+    // Kiểm tra form trước khi gửi
+    if (!validateForm()) {
+      toast({
+        title: 'Lỗi',
+        description: 'Vui lòng kiểm tra lại thông tin.',
+        variant: 'destructive'
+      })
       return
     }
 
@@ -33,7 +84,12 @@ export default function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone, message }),
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.replace(/[\s.-]/g, ''), // Cleanup phone number
+          message: message.trim()
+        }),
         cache: 'no-store' // Thêm để tránh cache
       })
 
@@ -92,24 +148,57 @@ export default function ContactPage() {
                 <h3 className="text-lg font-bold mb-4">Gửi Tin Nhắn</h3>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Họ và Tên *</label>
-                    <Input placeholder="Nhập tên của bạn" value={name} onChange={(e) => setName(e.target.value)} />
+                  <div className="space-y-2">
+                    <Input
+                      placeholder="Họ và tên"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      disabled={isSubmitting}
+                      className={errors.name ? 'border-red-500' : ''}
+                    />
+                    {errors.name && (
+                      <p className="text-sm text-red-500">{errors.name}</p>
+                    )}
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Email *</label>
-                    <Input placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <div className="space-y-2">
+                    <Input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={isSubmitting}
+                      className={errors.email ? 'border-red-500' : ''}
+                    />
+                    {errors.email && (
+                      <p className="text-sm text-red-500">{errors.email}</p>
+                    )}
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Số Điện Thoại *</label>
-                    <Input placeholder="Ví dụ: 0964.198.005" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                  <div className="space-y-2">
+                    <Input
+                      placeholder="Số điện thoại"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      disabled={isSubmitting}
+                      className={errors.phone ? 'border-red-500' : ''}
+                    />
+                    {errors.phone && (
+                      <p className="text-sm text-red-500">{errors.phone}</p>
+                    )}
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Tin Nhắn *</label>
-                    <Textarea placeholder="Nhập tin nhắn của bạn..." value={message} onChange={(e) => setMessage(e.target.value)} />
+                  <div className="space-y-2">
+                    <Textarea
+                      placeholder="Nội dung tin nhắn"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      disabled={isSubmitting}
+                      className={errors.message ? 'border-red-500' : ''}
+                    />
+                    {errors.message && (
+                      <p className="text-sm text-red-500">{errors.message}</p>
+                    )}
                   </div>
 
                   <div>
