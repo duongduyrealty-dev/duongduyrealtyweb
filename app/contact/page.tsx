@@ -190,7 +190,7 @@ export default function ContactPage() {
 
                   <div className="space-y-2">
                     <Textarea
-                      placeholder="Nội dung tin nhắn"
+                      placeholder="Hãy cho chúng tôi biết bạn đang quan tâm đến điều gì. Chúng tôi sẽ sớm liên hệ để hỗ trợ bạn."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       disabled={isSubmitting}

@@ -38,7 +38,7 @@ export default function Header() {
             <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               Tra cứu Giá
             </Link>
-            <Link href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link href="/news" className="text-foreground hover:text-primary transition-colors font-medium">
               Tin Bất động sản
             </Link>
             <Link href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
@@ -71,7 +71,7 @@ export default function Header() {
             <Link href="/" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
               Tra cứu Giá
             </Link>
-            <Link href="#" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
+            <Link href="/news" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
               Tin Bất động sản
             </Link>
             <Link href="/contact" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">

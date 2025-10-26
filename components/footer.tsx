@@ -62,7 +62,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/news" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Tin Bất động sản
                 </Link>
               </li>
