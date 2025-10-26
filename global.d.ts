@@ -16,3 +16,6 @@ declare module '*.sass' {
   export default content
 }
 
+// Temporary declaration for Vercel Analytics react entrypoint
+declare module '@vercel/analytics/react'
+

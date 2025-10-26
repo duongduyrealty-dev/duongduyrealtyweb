@@ -40,7 +40,7 @@ export default function Header() {
             <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
               Tin Bất động sản
             </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
               Liên hệ
             </a>
           </nav>
@@ -73,7 +73,7 @@ export default function Header() {
             <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
               Tin Bất động sản
             </a>
-            <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
+            <a href="/contact" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
               Liên hệ
             </a>
           </nav>
