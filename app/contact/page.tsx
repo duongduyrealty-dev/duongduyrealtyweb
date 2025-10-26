@@ -17,8 +17,9 @@ export default function ContactPage() {
   const [message, setMessage] = useState("")
 
   const { toast } = useToast()
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // basic validation
@@ -27,16 +28,45 @@ export default function ContactPage() {
       return
     }
 
-    // Here you would send data to the server / API
-    console.log({ name, email, phone, message })
+    setIsSubmitting(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, message }),
+        cache: 'no-store' // Thêm để tránh cache
+      })
 
-    toast({ title: "Gửi thành công", description: "Chúng tôi đã nhận được tin nhắn của bạn." })
+      const data = await res.json()
+      if (!res.ok) {
+        console.error('Lỗi API', {
+          status: res.status,
+          data,
+          url: '/api/contact'
+        })
+        toast({
+          title: 'Lỗi',
+          description: data?.detail || data?.error || 'Không thể gửi tin nhắn.'
+        })
+        return
+      }
 
-    // reset
-    setName("")
-    setEmail("")
-    setPhone("")
-    setMessage("")
+      toast({ title: 'Gửi thành công', description: 'Chúng tôi đã nhận được tin nhắn của bạn.' })
+
+      // reset
+      setName("")
+      setEmail("")
+      setPhone("")
+      setMessage("")
+    } catch (err) {
+      console.error('Lỗi gửi form:', err)
+      toast({
+        title: 'Lỗi kết nối',
+        description: 'Không thể kết nối tới máy chủ. Vui lòng kiểm tra mạng và thử lại.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -83,7 +113,9 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <Button type="submit" className="w-full">Gửi Tin Nhắn</Button>
+                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                      {isSubmitting ? 'Đang gửi...' : 'Gửi Tin Nhắn'}
+                    </Button>
                   </div>
                 </form>
               </div>
