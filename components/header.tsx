@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Menu, X, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,7 +14,7 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
               <Image
                 src="/logo.png"
@@ -27,22 +28,22 @@ export default function Header() {
               <h1 className="text-base md:text-lg lg:text-xl font-bold text-foreground">Dương Duy Realty</h1>
               <p className="text-[10px] md:text-xs text-muted-foreground leading-tight">Chuyên bất động sản khu vực Long Khánh - Đồng Nai</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               Trang chủ
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+            </Link>
+            <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               Tra cứu Giá
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+            </Link>
+            <Link href="#" className="text-foreground hover:text-primary transition-colors font-medium">
               Tin Bất động sản
-            </a>
-            <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
+            </Link>
+            <Link href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
               Liên hệ
-            </a>
+            </Link>
           </nav>
 
           {/* Right Section */}
@@ -61,21 +62,21 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+          {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden pb-4 space-y-2 animate-in fade-in slide-in-from-top-2">
-            <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
+            <Link href="/" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
               Trang chủ
-            </a>
-            <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
+            </Link>
+            <Link href="/" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
               Tra cứu Giá
-            </a>
-            <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
+            </Link>
+            <Link href="#" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
               Tin Bất động sản
-            </a>
-            <a href="/contact" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
+            </Link>
+            <Link href="/contact" className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors">
               Liên hệ
-            </a>
+            </Link>
           </nav>
         )}
       </div>

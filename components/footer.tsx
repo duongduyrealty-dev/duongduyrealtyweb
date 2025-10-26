@@ -3,6 +3,7 @@
 import { Facebook, MapPin, Phone, Mail, Instagram } from "lucide-react"
 import PhoneAction from "@/components/phone-action"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Footer() {
   return (
@@ -27,20 +28,22 @@ export default function Footer() {
               Chuyên bất động sản khu vực Long Khánh - Đồng Nai.
             </p>
             <div className="flex gap-3">
-              <a
+              <Link
                 href="https://www.facebook.com/duongduyrealty/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg transition-colors"
               >
                 <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="https://www.instagram.com/duongduyrealty/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg transition-colors"
               >
                 <Instagram className="w-5 h-5" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -49,24 +52,24 @@ export default function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Liên kết nhanh</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Trang chủ
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Tra cứu Giá
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Tin Bất động sản
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Blog
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -76,24 +79,24 @@ export default function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Pháp lý</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Về chúng tôi
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Chính sách bảo mật
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/terms-of-use" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Điều khoản sử dụng
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Liên hệ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
